@@ -3,29 +3,29 @@ import 'package:sample_flutter_search/shared/models/user.dart';
 import 'package:sample_flutter_search/shared/repositories/user_interface.dart';
 
 class UserRepository implements IUserRepository {
-  DioForNative client = DioForNative();
-  String endpoint = 'https://jsonplaceholder.typicode.com';
+  final DioForNative _client = DioForNative();
+  final String _endpoint = 'https://jsonplaceholder.typicode.com';
 
-  User userModel = User();
+  final User _userModel = User();
 
-  handleServerError() =>
+  _handleServerError() =>
       Future.error('The server is not current available, please try it later.');
 
   @override
   Future<List<User>> getAll() async {
     try {
-      final response = await client.get('$endpoint/users');
-      return userModel.listFromJson(response.data);
+      final response = await _client.get('$_endpoint/users');
+      return _userModel.listFromJson(response.data);
     } catch (_) {
-      return handleServerError();
+      return _handleServerError();
     }
   }
 
   @override
   Future<User> getById({required int id}) async {
     try {
-      final response = await client.get('$endpoint/users?id=$id');
-      List<User> users = userModel.listFromJson(response.data);
+      final response = await _client.get('$_endpoint/users?id=$id');
+      List<User> users = _userModel.listFromJson(response.data);
 
       if (users.isEmpty) {
         return Future.error('No user found with the id \'$id\'.');
@@ -33,15 +33,15 @@ class UserRepository implements IUserRepository {
 
       return users[0];
     } catch (_) {
-      return handleServerError();
+      return _handleServerError();
     }
   }
 
   @override
   Future<List<User>> getByName({required String name}) async {
     try {
-      final response = await client.get('$endpoint/users?name=$name');
-      List<User> users = userModel.listFromJson(response.data);
+      final response = await _client.get('$_endpoint/users?name=$name');
+      List<User> users = _userModel.listFromJson(response.data);
 
       if (users.isEmpty) {
         return Future.error('No user found with the name \'$name\'.');
@@ -49,7 +49,7 @@ class UserRepository implements IUserRepository {
 
       return users;
     } catch (_) {
-      return handleServerError();
+      return _handleServerError();
     }
   }
 }

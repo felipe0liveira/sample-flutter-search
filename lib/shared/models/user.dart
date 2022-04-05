@@ -18,7 +18,7 @@ class User {
     phone = json['phone'];
   }
 
-  listFromJson(json) {
+  List<User> listFromJson(json) {
     return (json as List).map((e) => User.fromJson(e)).toList();
   }
 }
