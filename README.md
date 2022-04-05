@@ -1,16 +1,24 @@
 # sample_flutter_search
 
-A new Flutter project.
+That's a sample mobile application for searching users based on it's `id` and `name`.  
+The UI is based on just one page, that contains a search form and the results list.
 
-## Getting Started
+### Getting Started
 
-This project is a starting point for a Flutter application.
+> This project is based on modules and repositories
 
-A few resources to get you started if this is your first Flutter project:
+**Home Module**  
+The [home](/lib/home/) module contains the it's page and controller, some widgets used by home page are inside widgets [folder](/lib/home/widgets/).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+**Shared Module**  
+The [shared](/lib/shared/) module contains all the shareable [models](/lib/shared/models/) and [repositories](/lib/shared/repositories/), considering a less effort scalability.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**User Entity**  
+The User entity starts on it's model that is based on the [API](http://jsonplaceholder.typicode.com/users).  
+The User interface was created based on the project's business rules, so basically It's possible to search for all Users or a single User could be searched by It's ID or name.
+
+***
+
+### Running the app
+
+You can run the app by using your favorite IDE or you can run by typing `flutter run ios` or `flutter run ios`.
